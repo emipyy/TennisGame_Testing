@@ -7,6 +7,7 @@ public class TennisGame {
 	private int player2Points;
 	
 	private boolean gameEnded;
+	//public boolean gameEnded;
 	
 	public TennisGame() {
 		player1Points = 0;
@@ -77,13 +78,13 @@ public class TennisGame {
 					return "player2 wins";
 			}
 			
-			if (player1Points >= 4 && player1Points == player2Points)
+			if (player1Points >= 3 && player1Points >= 3 && player1Points == player2Points)
 				return "deuce";
 			
-			if (player1Points < 4 && player1Points - player2Points >= 2) //error here 
+			if (player1Points >= 4  && player1Points - player2Points == 1) //error here 
 				return "player1 has advantage";
 			
-			if (player2Points < 4 && player2Points - player1Points >= 2)
+			if (player2Points >= 4 && player2Points - player1Points == 1)
 				return "player2 has advantage";							
 			
 			return  player1Score + " - " + player2Score ; //error here, wrong order

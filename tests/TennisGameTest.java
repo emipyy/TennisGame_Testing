@@ -73,8 +73,7 @@ public class TennisGameTest {
 		game.player2Scored();
 		game.player2Scored();
 		
-		String score = game.getScore() ;
-		
+		String score = game.getScore();
 		assertEquals("player2 wins", score);
 		
 	}
@@ -85,6 +84,12 @@ public class TennisGameTest {
 		
 			game.player2Scored();
 			game.player2Scored();
+			game.player2Scored();
+			
+			game.player1Scored();
+			game.player1Scored();
+			game.player1Scored();
+			
 			game.player2Scored();
 			String score = game.getScore() ;
 			assertEquals("player2 has advantage", score);
@@ -98,6 +103,12 @@ public class TennisGameTest {
 		
 			game.player1Scored();
 			game.player1Scored();
+			game.player1Scored();
+			
+			game.player2Scored();
+			game.player2Scored();
+			game.player2Scored();
+			
 			game.player1Scored();
 			String score = game.getScore() ;
 			assertEquals("player1 has advantage", score);
@@ -161,6 +172,85 @@ public void testTennisGame_Player2WinsPointAfterGameEnded_ResultsException() thr
 	game.player2Scored();
 	//Act
 	// This statement should cause an exception
-	game.player2Scored();			
-}		
+	game.player2Scored();	
+}	
+
+@Test
+//mutation test to see if player2 can win with score 4-2
+public void testTennisGame_MutationPlayer2Win4_2() throws TennisGameException {
+	TennisGame game = new TennisGame();
+	game.player2Scored();
+	game.player2Scored();
+	game.player2Scored();
+	
+	game.player1Scored();
+	game.player1Scored();
+	
+	game.player2Scored();
+	
+	String score = game.getScore();
+	assertEquals("player2 wins", score);
+	
+
+}	
+
+@Test
+//mutation test to see if player 1 can win with score 4-2
+public void testTennisGame_MutationPlayer1Win4_2() throws TennisGameException {
+	TennisGame game = new TennisGame();
+	game.player1Scored();
+	game.player1Scored();
+	game.player1Scored();
+	
+	game.player2Scored();
+	game.player2Scored();
+	
+	game.player1Scored();
+	
+	String score = game.getScore();
+	assertEquals("player1 wins", score);
+	
+
+}	
+
+
+
+@Test
+//checks player1 advantage by giving 3 socres to player2 and 4 to player1
+public void testTennisGame_MutationPlayer1Advantage() throws TennisGameException {
+	TennisGame game = new TennisGame();
+	game.player2Scored();
+	game.player2Scored();
+	game.player2Scored();
+	
+	game.player1Scored();
+	game.player1Scored();
+	game.player1Scored();
+	
+	game.player1Scored();
+	
+	String score = game.getScore();
+	assertEquals("player1 has advantage", score);
+
+}	
+
+@Test
+//tests deuce mutation by giving 3 scores to each player
+public void testTennisGame_MutationDeuce() throws TennisGameException {
+	TennisGame game = new TennisGame();
+	game.player1Scored();
+	game.player1Scored();
+	game.player1Scored();
+	
+	game.player2Scored();
+	game.player2Scored();
+	game.player2Scored();
+	
+	
+	String score = game.getScore();
+	assertEquals("deuce", score);
+	
+
+}	
+
 }
